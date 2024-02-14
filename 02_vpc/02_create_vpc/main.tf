@@ -103,7 +103,6 @@ resource "aws_default_route_table" "aws17-public-rt-table" {
  
 }
 
-
 resource "aws_route_table_association" "aws17-public-rt-2a" {
   subnet_id = aws_subnet.aws17-public-subnet-2a.id
   route_table_id = aws_default_route_table.aws17-public-rt-table.id
@@ -114,7 +113,6 @@ resource "aws_route_table_association" "aws17-public-rt-2c" {
 
 }
 
-
 # private route table 
 resource "aws_route_table" "aws17-private-rt-table" {
   vpc_id = aws_vpc.aws17-vpc.id
@@ -124,14 +122,12 @@ resource "aws_route_table" "aws17-private-rt-table" {
  
 }
 
-
 #private route
 resource "aws_route" "aws17-private-rt" {
   route_table_id = aws_route_table.aws17-private-rt-table.id
   destination_cidr_block = "0.0.0.0/0"
   nat_gateway_id = aws_nat_gateway.aws17-net.id
 }
-
 
 resource "aws_route_table_association" "aws17-private-rt-2a" {
   subnet_id = aws_subnet.aws17-private-subnet-2a.id
